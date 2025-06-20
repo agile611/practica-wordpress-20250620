@@ -14,11 +14,11 @@
 
 - name: Configurar la contraseña de root de MariaDB
   ansible.builtin.mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
     login_user: root
-    login_password: root
-    user: "{{ mariadb_root_user }}"
-    password: "{{ mariadb_root_password }}" 
-    host_all: yes
+    login_password: ""
+    priv: ".:ALL,GRANT"
+    host: "%"
     state: present
 
 - name: Crear base de datos para WordPress
