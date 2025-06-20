@@ -16,7 +16,7 @@
   notify: Reiniciar Apache
 
 - name: Habilitar el sitio de WordPress
-  command: a2ensite wordpress.conf
+  command: a2ensite wordpress
   args:
     warn: false
 
@@ -26,7 +26,7 @@
     warn: false
 
 - name: Deshabilitar el sitio por defecto de Apache
-  command: a2dissite 000-default.conf
+  command: a2dissite 000-default
   args:
     warn: false
 
