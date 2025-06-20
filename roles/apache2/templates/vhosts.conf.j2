@@ -9,6 +9,6 @@
         Require all granted
     </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/{{ apache2_vhost_error_log }}
-    CustomLog ${APACHE_LOG_DIR}/{{ apache2_vhost_access_log }} combined
+    ErrorLog ${APACHE_LOG_DIR}/{{ ansible_hostname }}_error.log
+    CustomLog ${APACHE_LOG_DIR}/{{ ansible_hostname }}_access.log combined
 </VirtualHost>
