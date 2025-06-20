@@ -1,6 +1,8 @@
 - name: Instalar servidor MariaDB
   ansible.builtin.apt:
-    name: mariadb-server
+    name:
+      - python3-pymysql
+      - mariadb-server
     state: present
     update_cache: yes
 
