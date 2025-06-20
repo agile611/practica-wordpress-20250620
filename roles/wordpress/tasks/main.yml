@@ -16,10 +16,11 @@
     src: ../templates/wp-config.php.j2
     dest: /var/www/html/wordpress/wp-config.php
     mode: '0644'
+
 - name: Ajustar permisos de WordPress
   file:
     path: /var/www/html/wordpress
     owner: www-data
     group: www-data
     mode: '0755'
-  handler: Reiniciar Apache
+  notify: Reiniciar Apache
