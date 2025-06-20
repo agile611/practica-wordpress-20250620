@@ -17,18 +17,12 @@
 
 - name: Habilitar el sitio de WordPress
   shell: a2ensite wordpress
-  args:
-    warn: false
 
 - name: Habilitar el módulo de reescritura de Apache
   shell: a2enmod rewrite
-  args:
-    warn: false
 
 - name: Deshabilitar el sitio por defecto de Apache
   shell: a2dissite 000-default
-  args:
-    warn: false
 
 - name: Reload Apache
   service:
