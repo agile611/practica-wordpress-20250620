@@ -1,7 +1,7 @@
 <VirtualHost *:80>
-    ServerName {{ apache2_vhost_server_name }}
-    ServerAlias {{ apache2_vhost_server_aliases | join(' ') }}
-    DocumentRoot {{ apache2_vhost_document_root }}
+    ServerName {{ ansible_hostname }}
+    ServerAlias {{ ansible_hostname }}
+    DocumentRoot /var/www/html/wordpress
 
     <Directory /var/www/html/wordpress>
         Options Indexes FollowSymLinks
