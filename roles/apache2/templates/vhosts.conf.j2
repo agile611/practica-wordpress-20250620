@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+    ServerName {{ apache2_vhost_server_name }}
+    ServerAlias {{ apache2_vhost_server_aliases | join(' ') }}
+    DocumentRoot {{ apache2_vhost_document_root }}
+
+    <Directory /var/www/html/wordpress>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/{{ apache2_vhost_error_log }}
+    CustomLog ${APACHE_LOG_DIR}/{{ apache2_vhost_access_log }} combined
+</VirtualHost>

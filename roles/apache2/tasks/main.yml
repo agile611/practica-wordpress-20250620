@@ -31,6 +31,6 @@
     warn: false
 
 - name: Reload Apache
-  systemd:
+  service:
     name: apache2
     state: reloaded
