@@ -28,7 +28,6 @@
     state: present
     login_user: "{{ mariadb_root_user }}"
     login_password: "{{ mariadb_root_password }}"
-    host: localhost
 
 - name: Crear usuario de base de datos para WordPress
   ansible.builtin.mysql_user:
