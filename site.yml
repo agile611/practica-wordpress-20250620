@@ -1,0 +1,19 @@
+- name: Configuración de Base de Datos (MariaDB)
+  hosts: database
+  become: yes
+  roles:
+    - mariadb
+
+- name: Configuración del servidor web (PHP, Apache2, Wordpress)
+  hosts: webserver
+  become: yes
+  roles:
+    - php
+    - apache2
+    - wordpress
+
+- name: Configuración del balanceador de carga (Nginx)
+  hosts: loadbalancer
+  become: yes
+  roles:
+    - nginx
