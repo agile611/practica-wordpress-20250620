@@ -6,5 +6,5 @@
 - name: Copiar configuración de Nginx para el balanceador de carga
   template:
     src: ../templates/nginx.conf.j2
-    dest: /etc/nginx/sites-available/default
+    dest: /etc/nginx/nginx.conf
   notify: Reiniciar Nginx
