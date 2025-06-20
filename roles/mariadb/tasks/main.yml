@@ -17,6 +17,8 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     login_user: root
     login_password: ""
+    name: "{{ mariadb_root_user }}"
+    password: "{{ mariadb_root_password }}"
     priv: ".:ALL,GRANT"
     host: "%"
     state: present
