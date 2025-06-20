@@ -1,0 +1,34 @@
+- name: Instalar servidor MariaDB
+  ansible.builtin.apt:
+    name: mariadb-server
+    state: present
+    update_cache: yes
+
+- name: Iniciar y habilitar el servicio de MariaDB
+  ansible.builtin.systemd:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Configurar la contraseña de root de MariaDB
+  ansible.builtin.mysql_user:
+    name: "{{ mariadb_root_user }}"
+    password: "{{ mariadb_root_password }}"
+    login_user: "{{ mariadb_root_user }}"
+    login_password: "{{ mariadb_root_password }}"
+
+- name: Crear base de datos para WordPress
+  ansible.builtin.mysql_db:
+    name: "{{ wordpress_db_name }}"
+    state: present
+    login_user: "{{ mariadb_root_user }}"
+    login_password: "{{ mariadb_root_password }}"
+
+- name: Crear usuario de base de datos para WordPress
+  ansible.builtin.mysql_user:
+    name: "{{ wordpress_db_user }}"
+    password: "{{ wordpress_db_password }}"
+    priv: "{{ wordpress_db_name }}.*:ALL"
+    state: present
+    login_user: "{{ mariadb_root_user }}"
+    login_password: "{{ mariadb_root_password }}"
