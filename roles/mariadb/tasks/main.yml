@@ -19,8 +19,7 @@
     login_password: ""
     name: "{{ mariadb_root_user }}"
     password: "{{ mariadb_root_password }}"
-    priv: ".:ALL,GRANT"
-    host: "%"
+    host: localhost
     state: present
 
 - name: Crear base de datos para WordPress
