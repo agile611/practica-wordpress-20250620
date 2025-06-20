@@ -12,16 +12,15 @@
     mode: '0755'
 
 - name: Copiar archivo de configuración de WordPress
-  ansible.builtin.copy:
+  template:
     src: ../templates/wp-config.php.j2
     dest: /var/www/html/wordpress/wp-config.php
     mode: '0644'
 
 - name: Ajustar permisos de WordPress
-  ansible.builtin.file:
+  file:
     path: /var/www/html/wordpress
     owner: www-data
     group: www-data
     mode: '0755'
   handler: Reiniciar Apache
-
