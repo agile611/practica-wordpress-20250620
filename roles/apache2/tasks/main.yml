@@ -1,0 +1,36 @@
+- name: Instalar Apache2
+  apt:
+    name: apache2
+    state: present
+
+- name: Habilitar y arrancar el servicio de Apache2
+  systemd:
+    name: apache2
+    enabled: true
+    state: started
+
+- name: Copiar VirtualHost de Apache
+  template:
+    src: ../templates/vhosts.conf.j2
+    dest: /etc/apache2/sites-available/wordpress.conf
+  notify: Reiniciar Apache
+
+- name: Habilitar el sitio de WordPress
+  command: a2ensite wordpress.conf
+  args:
+    warn: false
+
+- name: Habilitar el módulo de reescritura de Apache
+  command: a2enmod rewrite
+  args:
+    warn: false
+
+- name: Deshabilitar el sitio por defecto de Apache
+  command: a2dissite 000-default.conf
+  args:
+    warn: false
+
+- name: Reload Apache
+  systemd:
+    name: apache2
+    state: reloaded
