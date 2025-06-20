@@ -16,17 +16,17 @@
   notify: Reiniciar Apache
 
 - name: Habilitar el sitio de WordPress
-  command: a2ensite wordpress
+  shell: a2ensite wordpress
   args:
     warn: false
 
 - name: Habilitar el módulo de reescritura de Apache
-  command: a2enmod rewrite
+  shell: a2enmod rewrite
   args:
     warn: false
 
 - name: Deshabilitar el sitio por defecto de Apache
-  command: a2dissite 000-default
+  shell: a2dissite 000-default
   args:
     warn: false
 
