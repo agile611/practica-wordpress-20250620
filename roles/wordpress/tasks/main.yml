@@ -11,12 +11,11 @@
     remote_src: yes
     mode: '0755'
 
-- name: Copiar archivo de configuración de WordPress
+- name: Copiar archivo de configuracion de WordPress
   template:
     src: ../templates/wp-config.php.j2
     dest: /var/www/html/wordpress/wp-config.php
     mode: '0644'
-
 - name: Ajustar permisos de WordPress
   file:
     path: /var/www/html/wordpress
