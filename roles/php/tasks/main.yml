@@ -1,0 +1,22 @@
+- name: Instalar PHP y extensiones
+  ansible.builtin.apt:
+    name:
+      - php
+      - php-cli
+      - php-fpm
+      - php-mysql
+      - php-xml
+      - php-curl
+      - php-mbstring
+      - php-zip
+    state: present
+    update_cache: yes
+
+- name: Verificar que PHP está instalado
+  ansible.builtin.command: php -v
+  register: php_version
+  changed_when: false
+
+- name: Mostrar versión de PHP instalada
+  ansible.builtin.debug:
+    msg: "Versión de PHP instalada: {{ php_version.stdout }}"
